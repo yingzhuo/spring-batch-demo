@@ -1,0 +1,34 @@
+plugins {
+	id 'groovy-gradle-plugin'
+}
+
+description = '构建逻辑'
+
+['../gradle.properties', './gradle.properties']
+	.stream()
+	.forEach { filePath ->
+		var file = file(filePath)
+		if (file.exists() && file.isFile()) {
+			var props = new Properties()
+
+			if (filePath.endsWithIgnoreCase('.properties')) {
+				file.withDataInputStream { stream ->
+					props.load(stream)
+				}
+			}
+
+			if (filePath.endsWithIgnoreCase('.xml')) {
+				file.withDataInputStream { stream ->
+					props.loadFromXML(stream)
+				}
+			}
+
+			props.forEach(ext::set)
+		}
+	}
+
+dependencies {
+	implementation "io.spring.dependency-management:io.spring.dependency-management.gradle.plugin:$dependencyManagementPluginVersion"
+	implementation "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+	implementation "com.gorylenko.gradle-git-properties:gradle-git-properties:$gitPluginVersion"
+}

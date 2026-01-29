@@ -1,0 +1,42 @@
+plugins {
+	id 'buildlogic.root-project-conventions'
+}
+
+description = '根项目'
+
+ext {
+	set('getPropertyOrDefault', { String propertyName, Object defaultValue ->
+		hasProperty(propertyName) ? getProperty(propertyName) : defaultValue
+	})
+
+	set('buildProfile', getPropertyOrDefault('buildProfile', 'default'))
+
+	// SpringBoot BOM 版本微调
+	// https://docs.spring.io/spring-boot/appendix/dependency-versions/coordinates.html
+	// https://docs.spring.io/spring-boot/appendix/dependency-versions/properties.html
+}
+
+subprojects {
+	configurations.configureEach {
+		resolutionStrategy {
+			cacheChangingModulesFor(versionCachingHours as Integer, 'hours')
+			cacheDynamicVersionsFor(versionCachingHours as Integer, 'hours')
+			exclude group: 'org.apache.logging.log4j', module: 'log4j-api'
+			exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+			exclude group: 'org.springframework.boot', module: 'spring-boot-jackson'
+			exclude group: 'tools.jackson.core', module: 'jackson-core'
+			exclude group: 'tools.jackson.core', module: 'jackson-databind'
+		}
+	}
+}
+
+allprojects {
+	group = thisProjectGroup
+	version = thisProjectVersion
+}
+
+final var buildProfileFile = file("$rootDir/gradle/profile/${buildProfile}.gradle")
+if (buildProfileFile.exists() && buildProfileFile.canRead()) {
+	logger.debug('loading build-profile.gradle: {}', buildProfileFile.name)
+	apply from: buildProfileFile
+}

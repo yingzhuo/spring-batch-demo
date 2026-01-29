@@ -1,0 +1,13 @@
+plugins {
+	id 'dev.yumi.gradle.licenser'
+}
+
+license {
+	rule(file("$rootDir/buildSrc/config/license/header_template.txt"))
+
+	include '**/*.java'
+	exclude '**/*.properties'
+	exclude '**/*.xml'
+	exclude '**/*.yaml'
+	exclude '**/*.yml'
+}
