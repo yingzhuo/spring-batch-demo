@@ -28,25 +28,6 @@ spring:
   banner:
     location: "classpath:/META-INF/banner.txt"
     charset: "utf-8"
-  jackson2:
-    locale: "zh_CN"
-    time-zone: "Asia/Shanghai"
-    date-format: "yyyy-MM-dd HH:mm:ss.SSS"
-    default-property-inclusion: always
-    serialization:
-      indent-output: true
-      fail-on-self-references: true
-      fail-on-empty-beans: false
-      write-dates-as-timestamps: false
-      write-null-map-values: true
-      write-empty-json-arrays: true
-      write-single-elem-arrays-unwrapped: false
-      write-enums-using-to-string: true
-    deserialization:
-      fail-on-unknown-properties: false
-    mapper:
-      default-view-inclusion: true
-      accept-case-insensitive-enums: true
   lifecycle:
     timeout-per-shutdown-phase: "30s"
   jmx:
@@ -59,11 +40,6 @@ spring:
       enabled: true
       max-file-size: "1GB"
       max-request-size: "2GB"
-  flyway:
-    enabled: false
-  security:
-    filter:
-      order: -200
   task:
     execution:
       thread-name-prefix: "common-task-"
@@ -73,6 +49,9 @@ spring:
         keep-alive: 60s
         queue-capacity: 45
         allow-core-thread-timeout: true
+  batch:
+    job:
+      enabled: off
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Actuator

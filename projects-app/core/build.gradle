@@ -5,8 +5,6 @@ plugins {
 	id 'buildlogic.license-conventions'
 }
 
-description = '主程序'
-
 ext {
 }
 
@@ -26,7 +24,9 @@ dependencies {
 	api 'org.springframework.boot:spring-boot-starter-logging'
 	api 'org.springframework.boot:spring-boot-starter-validation'
 	api 'org.springframework.boot:spring-boot-starter-json'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	api 'org.springframework.boot:spring-boot-starter-jdbc'
+	api 'org.springframework.boot:spring-boot-starter-batch'
+	api 'org.springframework.boot:spring-boot-starter-batch-jdbc'
 
 	// spring-framework
 	compileOnly 'org.springframework:spring-context-indexer'
@@ -36,13 +36,10 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
-	// mapstruct
-	api 'org.mapstruct:mapstruct'
-	annotationProcessor 'org.mapstruct:mapstruct-processor'
+	// MySQL驱动程序
+	api 'com.mysql:mysql-connector-j'
 
 	// slf4j
 	api 'org.slf4j:slf4j-api'
 
-	// 通用工具
-	api 'com.google.guava:guava'
 }

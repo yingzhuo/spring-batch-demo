@@ -14,26 +14,21 @@
  * limitations under the License.
  */
 
-package io.github.yingzhuo.showcase.core;
+package io.github.yingzhuo.showcase.core.entity.component;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import io.github.yingzhuo.showcase.core.entity.Contacts;
+import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
+import org.springframework.batch.infrastructure.item.ItemProcessor;
 
-/**
- * 启动类
- */
-@RequiredArgsConstructor
-@SpringBootApplication
-public class ApplicationBoot {
+@Slf4j
+public class ContactsItemProcessor implements ItemProcessor<Contacts, String> {
 
-	/**
-	 * 启动方法
-	 *
-	 * @param args 启动参数
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(ApplicationBoot.class, args);
+	@Override
+	@Nullable
+	public String process(Contacts item) {
+		log.info("process contacts: {}", item);
+		return item.toString();
 	}
 
 }

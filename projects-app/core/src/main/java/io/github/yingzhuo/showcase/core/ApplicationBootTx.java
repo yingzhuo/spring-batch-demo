@@ -16,24 +16,10 @@
 
 package io.github.yingzhuo.showcase.core;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-/**
- * 启动类
- */
-@RequiredArgsConstructor
-@SpringBootApplication
-public class ApplicationBoot {
-
-	/**
-	 * 启动方法
-	 *
-	 * @param args 启动参数
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(ApplicationBoot.class, args);
-	}
-
+@Configuration
+@EnableTransactionManagement
+public class ApplicationBootTx {
 }

@@ -14,26 +14,24 @@
  * limitations under the License.
  */
 
-package io.github.yingzhuo.showcase.core;
+package io.github.yingzhuo.showcase.core.entity;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import lombok.Data;
+
+import java.io.Serializable;
 
 /**
- * 启动类
+ * 联系人
+ *
+ * @author 应卓
+ * @since 1.0.0
  */
-@RequiredArgsConstructor
-@SpringBootApplication
-public class ApplicationBoot {
+@Data
+public class Contacts implements Serializable {
 
-	/**
-	 * 启动方法
-	 *
-	 * @param args 启动参数
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(ApplicationBoot.class, args);
-	}
+	private String id;
+	private String name;
+	private String phoneNumber;
+	private String email;
 
 }

@@ -22,13 +22,10 @@
 	<logger name="org.hibernate.validator" level="warn"/>
 	<logger name="org.jboss.logging" level="warn"/>
 	<logger name="_org.springframework.web.servlet.HandlerMapping.Mappings" level="info"/>
+	<logger name="com.zaxxer.hikari" level="info"/>
 
 	<springProfile name="dev">
 		<include resource="logback-spring-profile/dev.xml"/>
-	</springProfile>
-
-	<springProfile name="prod">
-		<include resource="logback-spring-profile/prod.xml"/>
 	</springProfile>
 
 </configuration>
