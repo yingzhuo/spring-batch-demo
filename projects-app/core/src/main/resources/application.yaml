@@ -22,9 +22,7 @@ spring:
     cloud-platform: none
     lazy-initialization: false
     register-shutdown-hook: true
-    sources:
-      - "classpath:/META-INF/spring/beans.xml"
-      - "classpath:/META-INF/spring/security.xml"
+    sources: [ ]
   banner:
     location: "classpath:/META-INF/banner.txt"
     charset: "utf-8"
@@ -103,18 +101,3 @@ info:
 # ----------------------------------------------------------------------------------------------------------------------
 application: { }
 
-
-# ----------------------------------------------------------------------------------------------------------------------
-# Swagger配置
-# ----------------------------------------------------------------------------------------------------------------------
-springdoc:
-  api-docs:
-    enabled: true
-    path: "/v3/api-docs"
-  swagger-ui:
-    enabled: true
-    path: "/swagger-ui.html"
-    display-request-duration: true
-    display-operation-id: true
-  packages-to-scan:
-    - "io.github.yingzhuo.showcase.core"
