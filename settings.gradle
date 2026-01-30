@@ -25,7 +25,7 @@ dependencyResolutionManagement {
 	repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
 }
 
-rootProject.name = 'spring-batch-demo'
+rootProject.name = thisProjectName
 
 include ':project-bom'
 
