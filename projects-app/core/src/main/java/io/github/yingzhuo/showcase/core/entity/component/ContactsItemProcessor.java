@@ -19,15 +19,27 @@ package io.github.yingzhuo.showcase.core.entity.component;
 import io.github.yingzhuo.showcase.core.entity.Contacts;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.Nullable;
+import org.springframework.batch.core.annotation.BeforeStep;
+import org.springframework.batch.core.job.parameters.JobParameters;
+import org.springframework.batch.core.step.StepExecution;
 import org.springframework.batch.infrastructure.item.ItemProcessor;
 
 @Slf4j
 public class ContactsItemProcessor implements ItemProcessor<Contacts, String> {
 
+	private JobParameters jobParameters;
+
+	@BeforeStep
+	public void beforeStep(final StepExecution stepExecution) {
+		// 在Step开始前，保存JobParameters到成员变量
+		this.jobParameters = stepExecution.getJobParameters();
+	}
+
 	@Override
 	@Nullable
 	public String process(Contacts item) {
-		log.info("process contacts: {}", item);
+		item.setId(String.valueOf(jobParameters.getLong("time")));
+		log.info("process contacts: {}, {}", item, jobParameters.getLong("time"));
 		return item.toString();
 	}
 
