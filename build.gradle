@@ -9,8 +9,6 @@ ext {
 		hasProperty(propertyName) ? getProperty(propertyName) : defaultValue
 	})
 
-	set('buildProfile', getPropertyOrDefault('buildProfile', 'default'))
-
 	// SpringBoot BOM 版本微调
 	// https://docs.spring.io/spring-boot/appendix/dependency-versions/coordinates.html
 	// https://docs.spring.io/spring-boot/appendix/dependency-versions/properties.html
@@ -33,10 +31,4 @@ subprojects {
 allprojects {
 	group = thisProjectGroup
 	version = thisProjectVersion
-}
-
-final var buildProfileFile = file("$rootDir/gradle/profile/${buildProfile}.gradle")
-if (buildProfileFile.exists() && buildProfileFile.canRead()) {
-	logger.debug('loading build-profile.gradle: {}', buildProfileFile.name)
-	apply from: buildProfileFile
 }

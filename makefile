@@ -11,7 +11,6 @@ endif
 .PHONY: usage \
 clean purge rebuild-build-logic \
 update-dependencies compile build rebuild check test \
-build-docker-image remove-docker-image \
 update-gradle-wrapper \
 update-license-header \
 push-to-vcs reset-and-push-to-vcs \
@@ -28,8 +27,6 @@ usage:
 	@echo 'compile                        : 编译项目'
 	@echo 'build                          : 构建项目'
 	@echo 'rebuild                        : 重新构建项目'
-	@echo 'build-docker-image             : 构建docker镜像'
-	@echo 'remove-docker-image            : 删除docker镜像'
 	@echo 'test                           : 执行单元测试'
 	@echo 'check                          : 检查代码风格'
 	@echo 'update-gradle-wrapper          : 设置gradle-wrapper'
@@ -60,12 +57,6 @@ build:
 	@$(GRADLEW) 'build' -x 'test' -x 'check'
 
 rebuild: clean build
-
-build-docker-image:
-	@$(GRADLEW) 'buildDockerImage' -x 'test' -x 'check'
-
-remove-docker-image:
-	@$(GRADLEW) 'removeDockerImage'
 
 check:
 	@$(GRADLEW) 'check'
