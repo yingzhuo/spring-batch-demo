@@ -17,16 +17,21 @@
 package io.github.yingzhuo.showcase.core.controller;
 
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.job.Job;
+import org.springframework.batch.core.job.parameters.InvalidJobParametersException;
 import org.springframework.batch.core.job.parameters.JobParametersBuilder;
+import org.springframework.batch.core.launch.JobExecutionAlreadyRunningException;
+import org.springframework.batch.core.launch.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.launch.JobOperator;
+import org.springframework.batch.core.launch.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -40,16 +45,14 @@ public class JobController {
 	@Qualifier("job")
 	private Job job;
 
-	@PostMapping("/contacts")
-	@SneakyThrows
-	public String startJob() {
+	@GetMapping("/contacts")
+	public String startJob() throws JobInstanceAlreadyCompleteException, InvalidJobParametersException, JobExecutionAlreadyRunningException, JobRestartException {
 
 		var params = new JobParametersBuilder()
-			.addLong("time", System.currentTimeMillis())
+			.addString("runId", UUID.randomUUID().toString())
 			.toJobParameters();
 
 		jobOperator.start(job, params);
-
 		return "OK";
 	}
 

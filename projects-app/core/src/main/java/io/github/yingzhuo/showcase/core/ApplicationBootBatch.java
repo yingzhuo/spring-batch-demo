@@ -22,7 +22,6 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.batch.core.configuration.annotation.EnableJdbcJobRepository;
 import org.springframework.batch.core.job.Job;
 import org.springframework.batch.core.job.builder.JobBuilder;
-import org.springframework.batch.core.job.parameters.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.Step;
 import org.springframework.batch.core.step.builder.StepBuilder;
@@ -50,7 +49,7 @@ public class ApplicationBootBatch {
 	@Bean
 	public Job job(JobRepository repository) {
 		return new JobBuilder("contactsJob", repository)
-			.incrementer(new RunIdIncrementer())
+			//.incrementer(new RunIdIncrementer()) 手动启动作业时务必带上随机数参数
 			.start(step(repository))
 			.build();
 	}

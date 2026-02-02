@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false" scan="true" scanPeriod="30 seconds" packagingData="false">
 
-	<springProperty name="LOG_HOME" source="logback.log-home"/>
-	<springProperty name="LOG_NAME" source="logback.log-name"/>
-	<springProperty name="LOG_PATTERN" source="logback.log-pattern"/>
-
 	<!-- 导入logback类型 -->
 	<import class="ch.qos.logback.core.ConsoleAppender"/>
 	<import class="ch.qos.logback.core.rolling.RollingFileAppender"/>
@@ -24,8 +20,14 @@
 	<logger name="_org.springframework.web.servlet.HandlerMapping.Mappings" level="info"/>
 	<logger name="com.zaxxer.hikari" level="info"/>
 
-	<springProfile name="dev">
-		<include resource="logback-spring-profile/dev.xml"/>
-	</springProfile>
+	<appender name="STDOUT" class="ConsoleAppender">
+		<encoder class="PatternLayoutEncoder">
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]%-5level %logger{72}[%L] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="debug">
+		<appender-ref ref="STDOUT"/>
+	</root>
 
 </configuration>

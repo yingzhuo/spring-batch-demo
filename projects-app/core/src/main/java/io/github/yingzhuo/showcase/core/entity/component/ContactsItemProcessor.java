@@ -20,26 +20,29 @@ import io.github.yingzhuo.showcase.core.entity.Contacts;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.Nullable;
 import org.springframework.batch.core.annotation.BeforeStep;
-import org.springframework.batch.core.job.parameters.JobParameters;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.step.StepExecution;
 import org.springframework.batch.infrastructure.item.ItemProcessor;
+import org.springframework.util.Assert;
 
 @Slf4j
+@StepScope
 public class ContactsItemProcessor implements ItemProcessor<Contacts, String> {
 
-	private JobParameters jobParameters;
+	private String runId;
 
 	@BeforeStep
 	public void beforeStep(final StepExecution stepExecution) {
-		// 在Step开始前，保存JobParameters到成员变量
-		this.jobParameters = stepExecution.getJobParameters();
+		final var jobParameters = stepExecution.getJobParameters();
+
+		this.runId = jobParameters.getString("runId");
+		Assert.hasText(runId, "runId must not be empty");
 	}
 
 	@Override
-	@Nullable
-	public String process(Contacts item) {
-		item.setId(String.valueOf(jobParameters.getLong("time")));
-		log.info("process contacts: {}, {}", item, jobParameters.getLong("time"));
+	public @Nullable String process(Contacts item) {
+		item.setId(runId);
+		log.info("process contacts: {}", item);
 		return item.toString();
 	}
 
