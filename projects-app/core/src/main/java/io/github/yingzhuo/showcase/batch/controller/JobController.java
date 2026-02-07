@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.github.yingzhuo.showcase.core.controller;
+package io.github.yingzhuo.showcase.batch.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

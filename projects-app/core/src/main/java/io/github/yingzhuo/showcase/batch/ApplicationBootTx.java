@@ -14,7 +14,12 @@
  * limitations under the License.
  */
 
-@NullMarked
-package io.github.yingzhuo.showcase.core;
+package io.github.yingzhuo.showcase.batch;
 
-import org.jspecify.annotations.NullMarked;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@Configuration
+@EnableTransactionManagement
+public class ApplicationBootTx {
+}

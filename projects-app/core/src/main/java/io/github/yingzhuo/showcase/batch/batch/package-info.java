@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-@Nullable
-package io.github.yingzhuo.showcase.core.entity.component;
+@NullMarked
+package io.github.yingzhuo.showcase.batch.batch;
 
-import jakarta.annotation.Nullable;
+import org.jspecify.annotations.NullMarked;

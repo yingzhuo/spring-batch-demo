@@ -27,6 +27,7 @@ dependencies {
 	api 'org.springframework.boot:spring-boot-starter-jdbc'
 	api 'org.springframework.boot:spring-boot-starter-batch'
 	api 'org.springframework.boot:spring-boot-starter-batch-jdbc'
+	testImplementation 'org.springframework.boot:spring-boot-starter-batch-test'
 
 	// spring-framework
 	compileOnly 'org.springframework:spring-context-indexer'
@@ -41,5 +42,4 @@ dependencies {
 
 	// slf4j
 	api 'org.slf4j:slf4j-api'
-
 }

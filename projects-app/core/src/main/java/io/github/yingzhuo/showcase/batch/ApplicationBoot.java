@@ -14,7 +14,28 @@
  * limitations under the License.
  */
 
-@NullMarked
-package io.github.yingzhuo.showcase.core.controller;
+package io.github.yingzhuo.showcase.batch;
 
-import org.jspecify.annotations.NullMarked;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+/**
+ * 启动类
+ */
+@Slf4j
+@RequiredArgsConstructor
+@SpringBootApplication
+public class ApplicationBoot {
+
+	/**
+	 * 启动方法
+	 *
+	 * @param args 启动参数
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(ApplicationBoot.class, args);
+	}
+
+}

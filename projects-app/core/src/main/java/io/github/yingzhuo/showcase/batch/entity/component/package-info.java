@@ -14,26 +14,7 @@
  * limitations under the License.
  */
 
-package io.github.yingzhuo.showcase.core;
+@Nullable
+package io.github.yingzhuo.showcase.batch.entity.component;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-/**
- * 启动类
- */
-@RequiredArgsConstructor
-@SpringBootApplication
-public class ApplicationBoot {
-
-	/**
-	 * 启动方法
-	 *
-	 * @param args 启动参数
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(ApplicationBoot.class, args);
-	}
-
-}
+import jakarta.annotation.Nullable;

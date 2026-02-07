@@ -15,6 +15,6 @@
  */
 
 @NullMarked
-package io.github.yingzhuo.showcase.core.batch;
+package io.github.yingzhuo.showcase.batch.controller;
 
 import org.jspecify.annotations.NullMarked;

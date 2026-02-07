@@ -14,24 +14,7 @@
  * limitations under the License.
  */
 
-package io.github.yingzhuo.showcase.core.entity;
+@NullMarked
+package io.github.yingzhuo.showcase.batch.entity;
 
-import lombok.Data;
-
-import java.io.Serializable;
-
-/**
- * 联系人
- *
- * @author 应卓
- * @since 1.0.0
- */
-@Data
-public class Contacts implements Serializable {
-
-	private String id;
-	private String name;
-	private String phoneNumber;
-	private String email;
-
-}
+import org.jspecify.annotations.NullMarked;

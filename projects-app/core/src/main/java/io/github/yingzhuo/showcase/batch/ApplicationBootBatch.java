@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package io.github.yingzhuo.showcase.core;
+package io.github.yingzhuo.showcase.batch;
 
-import io.github.yingzhuo.showcase.core.entity.Contacts;
-import io.github.yingzhuo.showcase.core.entity.component.ContactsItemProcessor;
+import io.github.yingzhuo.showcase.batch.entity.Contacts;
+import io.github.yingzhuo.showcase.batch.entity.component.ContactsItemProcessor;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.EnableJdbcJobRepository;
 import org.springframework.batch.core.job.Job;
