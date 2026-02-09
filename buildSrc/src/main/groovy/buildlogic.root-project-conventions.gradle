@@ -5,10 +5,10 @@ plugins {
 defaultTasks 'clean'
 
 tasks.named('wrapper') {
-	distributionUrl = "https://mirrors.cloud.tencent.com/gradle/gradle-$gradleWrapperVersion-bin.zip"
-	//networkTimeout = 120000
-	//validateDistributionUrl = false
-	//distributionType = Wrapper.DistributionType.ALL
+	distributionUrl = gradleWrapperDownloadUrl
+	networkTimeout = 120000
+	validateDistributionUrl = false
+	distributionType = Wrapper.DistributionType.ALL
 }
 
 tasks.register('pushToVcs', Exec) {
