@@ -30,5 +30,5 @@ description = '构建逻辑'
 dependencies {
 	implementation "io.spring.dependency-management:io.spring.dependency-management.gradle.plugin:$dependencyManagementPluginVersion"
 	implementation "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
-	implementation "com.gorylenko.gradle-git-properties:gradle-git-properties:$gitPluginVersion"
+	//implementation "com.gorylenko.gradle-git-properties:gradle-git-properties:$gitPluginVersion"
 }
